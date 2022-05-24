@@ -2,7 +2,7 @@
 from reqUrlTo import reqURL
 
 
-def moviesVerse(url_base, automate=False, fstLink=int(1), sndLink=int(1)):
+def bollyVerse(url_base, automate=False, fstLink=int(1), sndLink=int(1)):
 
    soup = reqURL(url_base)
 
@@ -33,7 +33,7 @@ def moviesVerse(url_base, automate=False, fstLink=int(1), sndLink=int(1)):
 
    download_num = 1
 
-   print('\nO->>Select from download links\n')
+   print(download_links)
 
    #------ /\/\/\/\/\/\/\/\/\/\/\/\/\///////ITERATING DOWNLOAD lINKS ------------------------------/\//\//\/\/\/\//\/\//\/\/\/\/\/\/
 
@@ -64,8 +64,12 @@ def moviesVerse(url_base, automate=False, fstLink=int(1), sndLink=int(1)):
 
       selected_download_links = download_links[(selected_downloads-1)]
 
+   
    soup_download = reqURL(selected_download_links)
+   
 
    nextLink = soup_download.find(
-       'a', attrs={'class': 'maxbutton-1 maxbutton maxbutton-fast-server-gdrive'})['href']
+       'a', attrs={'class': 'maxbutton-1 maxbutton'})['href']
    return nextLink
+
+#bollyVerse('https://bollyverse.xyz/?s=kgf',True)

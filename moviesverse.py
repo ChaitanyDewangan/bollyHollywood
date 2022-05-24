@@ -1,7 +1,7 @@
 
 from reqUrlTo import reqURL
 
-def moviesVerse(url_base,automate=False,fstLink=int(1),sndLink=int(1)):
+def moviesVerse(url_base,automate=False,bolly=False,fstLink=int(1),sndLink=int(1)):
    
    
    
@@ -74,8 +74,11 @@ def moviesVerse(url_base,automate=False,fstLink=int(1),sndLink=int(1)):
 
    
    soup_download=reqURL(selected_download_links)
-
-   nextLink=soup_download.find('a',attrs={'class':'maxbutton-1 maxbutton maxbutton-fast-server-gdrive'})['href']
+   if(bolly):
+      nextLink = soup_download.find(
+          'a', attrs={'class': 'maxbutton-5 maxbutton maxbutton-fast-server-gdrive'})['href']
+   else:
+      nextLink=soup_download.find('a',attrs={'class':'maxbutton-1 maxbutton maxbutton-fast-server-gdrive'})['href']
    return nextLink
     
 
